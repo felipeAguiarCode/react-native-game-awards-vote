@@ -1,3 +1,6 @@
+
+const baseApiURL= "http://192.168.3.103:8080/api/"
+
 export async function clientGetGames(){
 
   return [
@@ -83,13 +86,30 @@ export async function clientGetGames(){
 
 export async function clientGetGamesReal(){
 
-  const response = await fetch("https://github.com/falvojr/dio-game-awards/blob/main/docs/mock/games.json");
+  const response = await fetch(`${baseApiURL}games`);
 
   const json = await response.json();
+
+  console.log(json)
 
   return json 
 }
 
-export async function clientSendingVotes(){
+export async function clientSendingVotes(id: number){
+
+  console.log("votou")
+
+  let requestOptions = {
+    method: 'PATCH',
+    redirect: 'follow'
+  };
   
+  fetch(`${baseApiURL}games/${id}/vote`, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+export async function clietGetWinner(){
+
 }

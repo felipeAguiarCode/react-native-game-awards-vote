@@ -19,10 +19,12 @@ export function VotesScreen() {
    useEffect(()=>{
 
      (async () => {
-       const result =  await clientGetGames()
-       setGameList(result)
+       const mock =  await clientGetGames()
+       const realGames =  await clientGetGamesReal()
+       setGameList(realGames)
 
-       console.log("oi")
+       console.log(realGames)
+
      })();
 
    },[])

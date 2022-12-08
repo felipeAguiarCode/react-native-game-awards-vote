@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native';
+import { clientSendingVotes } from '../../api/api'
 
 const sendingVote = (id:number)=>{
   Alert.alert(
     "Vote sent",
     "thanks for helping decide game of the year",
     [
-      { text: "OK", onPress: () => console.log(id) }
+      { text: "OK", onPress: () => clientSendingVotes(id) }
     ]
   );
 }
